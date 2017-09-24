@@ -24,9 +24,9 @@
     </scm> -->
 
     <scm>
-        <connection>scm:git:file://.</connection>
-        <developerConnection>scm:git:file://.</developerConnection>
-        <url>scm:git:file://.</url>
+        <connection>scm:git:git:github.com/vicziani/jtechlog-versioninfo</connection>
+        <developerConnection>scm:git:git:github.com/vicziani/jtechlog-versioninfo</developerConnection>
+        <url>https://github.com/vicziani/jtechlog-versioninfo</url>
     </scm>
 
     <dependencies>
