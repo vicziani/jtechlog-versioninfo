@@ -1,11 +1,11 @@
-JTechLog verziószám megjelenítése
+JTechLog verziÃ³szÃ¡m megjelenÃ­tÃ©se
 =================================
 
-Ez a program a JTechLog (<http://www.jtechlog.hu>) blog "Verziószám megjelenítése az alkalmazásban" cikkéhez 
-készült példaprogram. 
-Maven-nel build-elhetõ, és a letöltést követõen a 
-'mvn package' paranccsal buildelhetõ (a teszt esetek is lefutnak). 
+Ez a program a JTechLog (<http://www.jtechlog.hu>) blog "VerziÃ³szÃ¡m megjelenÃ­tÃ©se az alkalmazÃ¡sban" cikkÃ©hez 
+kÃ©szÃ¼lt pÃ©ldaprogram. 
+Maven-nel build-elhetÅ‘, Ã©s a letÃ¶ltÃ©st kÃ¶vetÅ‘en a 
+'mvn package' paranccsal buildelhetÅ‘ (a teszt esetek is lefutnak). 
 
-Felhasznált technológiák: lásd `pom.xml`
+FelhasznÃ¡lt technolÃ³giÃ¡k: lÃ¡sd `pom.xml`
 
 viczian.istvan a gmail-en
