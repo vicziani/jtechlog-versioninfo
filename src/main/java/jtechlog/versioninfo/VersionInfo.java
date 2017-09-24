@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- *
- */
 public class VersionInfo {
     
     private String version;
@@ -21,9 +18,7 @@ public class VersionInfo {
     
     public VersionInfo() {
         Properties p = new Properties();
-        InputStream is = null;
-        try {
-            is = VersionInfo.class.getResourceAsStream("/version.properties");
+        try (InputStream is = VersionInfo.class.getResourceAsStream("/version.properties")) {
             p.load(is);
             version = p.getProperty("version");
             buildNumber = p.getProperty("buildNumber");
@@ -32,16 +27,7 @@ public class VersionInfo {
             scmBranch = p.getProperty("scmBranch");
         }
         catch (IOException e) {
-            throw new AssertionError(e);
-        }
-        finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException ex) {
-                    // InputSream lezárásakor hiba
-                }
-            }
+            throw new RuntimeException("Error loading properties file", e);
         }
     }
 
