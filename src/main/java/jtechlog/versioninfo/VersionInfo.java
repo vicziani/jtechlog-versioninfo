@@ -2,52 +2,31 @@ package jtechlog.versioninfo;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Properties;
+import java.util.jar.Attributes;
+import java.util.jar.Manifest;
 
 public class VersionInfo {
     
     private String version;
 
-    private String buildNumber;
+    private String build;
     
-    private String buildInfo;
-    
-    private String timestamp;
-    
-    private String scmBranch;
+    public static void main(String[] args) {
+        VersionInfo versionInfo = new VersionInfo();
+        System.out.println("Version: " + versionInfo.version);
+        System.out.println("Build: " + versionInfo.build);
+    }
     
     public VersionInfo() {
-        Properties p = new Properties();
-        try (InputStream is = VersionInfo.class.getResourceAsStream("/version.properties")) {
-            p.load(is);
-            version = p.getProperty("version");
-            buildNumber = p.getProperty("buildNumber");
-            buildInfo = p.getProperty("buildInfo");
-            timestamp = p.getProperty("timestamp");
-            scmBranch = p.getProperty("scmBranch");
+        try (InputStream is = VersionInfo.class.getResourceAsStream("/META-INF/MANIFEST.MF")) {
+            Manifest manifest = new Manifest(is);
+            Attributes attributes = manifest.getMainAttributes();
+
+            version = attributes.getValue(Attributes.Name.IMPLEMENTATION_VERSION);
+            build = attributes.getValue("Implementation-Build");
         }
         catch (IOException e) {
-            throw new RuntimeException("Error loading properties file", e);
+            throw new RuntimeException("Error loading META-INF/MANIFEST.MF file from classpath", e);
         }
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public String getBuildNumber() {
-        return buildNumber;
-    }
-
-    public String getBuildInfo() {
-        return buildInfo;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-    
-    public String getScmBranch() {
-        return scmBranch;
     }
 }
